@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ব্যক্তিগত তথ্য</title>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    (function(){
+      emailjs.init("m8V9A-gtcFxKnDBdh"); // আপনার Public Key
+    })();
+
+    function sendMail(e) {
+      e.preventDefault();
+
+      emailjs.sendForm("service_zyz27er","template_07gauvb", "#infoForm")
+      .then(function(response) {
+        alert("✅ আপনার তথ্য সফলভাবে পাঠানো হয়েছে!");
+      }, function(error) {
+        alert("❌ সমস্যা হয়েছে, আবার চেষ্টা করুন।");
+        console.log(error);
+      });
+    }
+  </script>
+</head>
+<body style="font-family:sans-serif; text-align:center; margin-top:30px;">
+
+  <h2>আপনার তথ্য পূরণ করুন</h2>
+
+  <form id="infoForm" onsubmit="sendMail(event)">
+    <input type="text" name="fname" placeholder="First Name" required style="padding:8px; margin:5px;"><br>
+    <input type="text" name="lname" placeholder="Last Name" required style="padding:8px; margin:5px;"><br>
+    <input type="email" name="email" placeholder="Email Address" required style="padding:8px; margin:5px;"><br>
+    <input type="text" name="village" placeholder="গ্রাম" required style="padding:8px; margin:5px;"><br>
+    <input type="text" name="thana" placeholder="থানা" required style="padding:8px; margin:5px;"><br>
+    <input type="text" name="district" placeholder="জেলা" required style="padding:8px; margin:5px;"><br>
+    <input type="text" name="division" placeholder="বিভাগ" required style="padding:8px; margin:5px;"><br><br>
+
+    <button type="submit" style="padding:10px 20px; background:green; color:white; border:none; border-radius:5px;">সাবমিট</button>
+  </form>
+
+</body>
+</html>
